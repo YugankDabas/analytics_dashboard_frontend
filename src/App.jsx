@@ -37,7 +37,7 @@ function App() {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       if (isHealthy === null) setIsHealthy(false);
-    }, 5000);
+    }, 60000);
 
     analyticsService.healthCheck()
       .then(() => {
@@ -59,7 +59,9 @@ function App() {
         <div className="glass-card p-12 max-w-md relative z-10">
           <AlertTriangle className="text-red-500 mx-auto mb-4" size={48} />
           <h1 className="text-2xl font-bold mb-2">Service Unavailable</h1>
-          <p className="text-slate-400">The analytics backend is currently unreachable. Please try again later.</p>
+          <p className="text-slate-400">
+            The analytics backend is currently unreachable. If you're using Render's free tier, the server may be waking up (this can take up to 1 minute).
+          </p>
           <button
             onClick={() => window.location.reload()}
             className="mt-6 px-6 py-2 bg-brand-indigo rounded-xl font-medium hover:scale-105 transition-transform"
