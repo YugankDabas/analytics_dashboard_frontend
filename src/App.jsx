@@ -41,10 +41,12 @@ function App() {
 
     analyticsService.healthCheck()
       .then(() => {
+        console.log("Backend health check successful");
         clearTimeout(timeout);
         setIsHealthy(true);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Backend health check failed:", err);
         clearTimeout(timeout);
         setIsHealthy(false);
       });
