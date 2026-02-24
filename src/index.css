@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --color-brand-indigo: #6366f1;
+  --color-brand-emerald: #10b981;
+}
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #0f172a;
+  color: white;
+  color-scheme: dark;
+}
+
+@layer base {
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply m-0 min-h-screen overflow-x-hidden;
+    background: radial-gradient(circle at top right, #1e1b4b, #0b1220);
+  }
+}
+
+@layer utilities {
+  .animate-drift {
+    animation: drift 20s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+
+  @keyframes drift {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+      transform: translate(-40px, 60px) rotate(5deg);
+    }
+  }
+
+  .glass-card {
+    @apply relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-2xl transition-all duration-300 ease-out;
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-3xl border border-white/5 pointer-events-none;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/10 hover:scale-[1.01] hover:shadow-black/40;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-indigo-400 to-emerald-400 bg-clip-text text-transparent;
+  }
+
+  .bg-radial-highlight {
+    background: radial-gradient(circle at center, var(--color-brand-indigo-5), transparent 70%);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
