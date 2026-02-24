@@ -49,7 +49,8 @@ const GlassDropdown = ({ value, onChange, options, label, icon: Icon }) => {
                             <button
                                 key={option.value}
                                 type="button"
-                                onClick={() => {
+                                onClick={(e) => {
+                                    e.stopPropagation();
                                     onChange(option.value);
                                     setIsOpen(false);
                                 }}

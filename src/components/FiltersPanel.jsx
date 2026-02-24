@@ -30,7 +30,7 @@ const FiltersPanel = ({ filters, setFilters, featureNames }) => {
     ];
 
     return (
-        <div className="glass-card p-6 mb-10 flex flex-wrap gap-6 items-end animate-fade-up">
+        <div className="glass-card p-6 mb-10 flex flex-wrap gap-6 items-end animate-fade-up relative z-20">
             <div className="space-y-2 flex-1 min-w-[200px]">
                 <label className="text-sm font-medium text-slate-400 flex items-center gap-2 ml-1">
                     <Calendar size={14} /> Start Date
