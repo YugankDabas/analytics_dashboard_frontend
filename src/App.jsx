@@ -35,9 +35,21 @@ function App() {
   const [isHealthy, setIsHealthy] = React.useState(null);
 
   React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (isHealthy === null) setIsHealthy(false);
+    }, 5000);
+
     analyticsService.healthCheck()
-      .then(() => setIsHealthy(true))
-      .catch(() => setIsHealthy(false));
+      .then(() => {
+        clearTimeout(timeout);
+        setIsHealthy(true);
+      })
+      .catch(() => {
+        clearTimeout(timeout);
+        setIsHealthy(false);
+      });
+
+    return () => clearTimeout(timeout);
   }, []);
 
   if (isHealthy === false) {
